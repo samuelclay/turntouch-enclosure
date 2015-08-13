@@ -1,12 +1,14 @@
 ' 1002
-' Bottom of workpiece
 SA
 VD, , , 0
 &PWMaterial = 0.75
 &PWZorigin = Part Surface
 
 ' Ramp4
-PAUSE
+&Tool = 2
+C9
+TR, 1000
+C6
 J3, 0.723, 0.961, 0.6
 J3, 0.723, 0.961, 0.0777
 VS, 0.7, 0.7

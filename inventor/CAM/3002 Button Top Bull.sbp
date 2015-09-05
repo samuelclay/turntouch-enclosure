@@ -1,4 +1,5 @@
 ' 3002 Button Top Bull
+' Bottom of workpiece
 SA
 VD, , , 0
 &PWMaterial = 0.5

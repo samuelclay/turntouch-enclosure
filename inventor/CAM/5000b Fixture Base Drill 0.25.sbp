@@ -5,7 +5,7 @@ VD, , , 0
 &PWMaterial = 1.4
 &PWZorigin = Part Surface
 
-' Drill3 (4)
+' Peg & Screw Drill
 &Tool = 3
 C9
 TR, 100

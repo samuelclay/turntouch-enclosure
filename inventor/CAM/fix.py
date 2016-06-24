@@ -19,7 +19,7 @@ def delete_matching_lines(pattern):
         f = open(file, 'w')
         f.writelines(output)
         f.close()
-        print " ---> Rewriting %-32s found %s C7s" % (os.path.basename(file), found)
+        print " ---> Rewriting %-48s found %s C7s" % (os.path.basename(file), found)
         
 
 def merge_files(top_prefix, bottom_prefix, combined_filename):
@@ -55,7 +55,10 @@ def merge_files(top_prefix, bottom_prefix, combined_filename):
     f = open(os.path.join(directory, combined_filename), 'w')
     f.writelines(merged_file)
     f.close()
-    print " ---> Merging %s lines from %s and %s lines from %s: %s lines in %s" % (len(top_file), top_filename, len(bottom_file), bottom_filename, len(merged_file), combined_filename)
+    print """
+ ---> Merging %s lines from %s 
+              %s lines from %s
+           -> %s lines in %s""" % (len(top_file), top_filename, len(bottom_file), bottom_filename, len(merged_file), combined_filename)
     
     
 if __name__ == "__main__":

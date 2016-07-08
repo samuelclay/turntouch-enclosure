@@ -68,6 +68,6 @@ def merge_files(top_prefix, bottom_prefix, combined_filename):
     
 if __name__ == "__main__":
     delete_matching_lines('C7')
-    merge_files('1001', '2001', '0001 All Cavity Flat.sbp')
-    merge_files('1002', '2002', '0002 All Cavity Ball.sbp')
-    merge_files('1011', '2011', '0011 All Core Ball.sbp')
+    # merge_files('1001', '2001', '0001 All Cavity Flat.sbp')
+    # merge_files('1002', '2002', '0002 All Cavity Ball.sbp')
+    # merge_files('1011', '2011', '0011 All Core Ball.sbp')

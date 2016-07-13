@@ -87,7 +87,6 @@ def speed_adjustment(wood, speed, min_speed=0.5):
                     
                 print " ---> %s: %-48s shifting %s,%s to %s,%s" % (wood, os.path.basename(cam_file), 
                     old_feed_speed, old_plunge_speed, new_feed_speed, new_plunge_speed)
-                print parts
                 output.append("%s, %s, %s\r\n" % (', '.join(parts), new_feed_speed, new_plunge_speed))
             else:
                 output.append(line + '\r\n')

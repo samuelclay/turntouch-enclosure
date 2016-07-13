@@ -9,6 +9,7 @@ def delete_matching_lines(pattern):
         filelines = f.read().splitlines()
         output = []
         found = 0
+        # Preserve the last 'C7'/pattern
         lastPatternIndex = (x for x in reversed([y for y in enumerate(filelines)]) if x[1] == pattern).next()[0]
         for l, line in enumerate(filelines):
             if not pattern in line or l == lastPatternIndex:
@@ -65,9 +66,32 @@ def merge_files(top_prefix, bottom_prefix, combined_filename):
                   %s lines from %s
                -> %s lines in %s""" % (len(top_file), top_filename, len(bottom_file), bottom_filename, len(merged_file), combined_filename)
     
+
+def speed_adjustment(wood, speed):
+    directory = os.path.dirname(os.path.realpath(__file__))
+    for file in glob.glob(os.path.join(directory, "*.sbp")):
+        f = open(file)
+        filelines = f.read().splitlines()
+        output = []
+        found = 0
+        for l, line in enumerate(filelines):
+            if line.startswith('VS'):
+                parts = line.split(',')
+                old_plunge_speed = float(parts.pop())
+                old_feed_speed = float(parts.pop())
+                print " ---> %-48s shifting %s to %s for %s" % (os.path.basename(file), found)
+                output.append("%s")
+            else:
+                output.append(line + '\r\n')
+        f.close()
+        f = open(file, 'w')
+        f.writelines(output)
+        f.close()
     
+
 if __name__ == "__main__":
     delete_matching_lines('C7')
+    speed_adjustment('rosewood', 0.333)
     # merge_files('1001', '2001', '0001 All Cavity Flat.sbp')
     # merge_files('1002', '2002', '0002 All Cavity Ball.sbp')
     # merge_files('1011', '2011', '0011 All Core Ball.sbp')

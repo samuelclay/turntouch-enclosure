@@ -67,24 +67,33 @@ def merge_files(top_prefix, bottom_prefix, combined_filename):
                -> %s lines in %s""" % (len(top_file), top_filename, len(bottom_file), bottom_filename, len(merged_file), combined_filename)
     
 
-def speed_adjustment(wood, speed):
+def speed_adjustment(wood, speed, min_speed=0.5):
     directory = os.path.dirname(os.path.realpath(__file__))
-    for file in glob.glob(os.path.join(directory, "*.sbp")):
-        f = open(file)
+    for cam_file in glob.glob(os.path.join(directory, "*.sbp")):
+        f = open(cam_file)
         filelines = f.read().splitlines()
         output = []
-        found = 0
         for l, line in enumerate(filelines):
             if line.startswith('VS'):
                 parts = line.split(',')
                 old_plunge_speed = float(parts.pop())
                 old_feed_speed = float(parts.pop())
-                print " ---> %-48s shifting %s to %s for %s" % (os.path.basename(file), found)
-                output.append("%s")
+                new_feed_speed = round(old_feed_speed * speed, 1)
+                new_plunge_speed = round(old_plunge_speed * speed, 1)
+                
+                if old_feed_speed < min_speed:
+                    new_feed_speed = old_feed_speed
+                    new_plunge_speed = old_plunge_speed
+                    
+                print " ---> %s: %-48s shifting %s,%s to %s,%s" % (wood, os.path.basename(cam_file), 
+                    old_feed_speed, old_plunge_speed, new_feed_speed, new_plunge_speed)
+                print parts
+                output.append("%s, %s, %s\r\n" % (', '.join(parts), new_feed_speed, new_plunge_speed))
             else:
                 output.append(line + '\r\n')
         f.close()
-        f = open(file, 'w')
+        
+        f = open(os.path.join(wood, os.path.basename(cam_file)), 'w+')
         f.writelines(output)
         f.close()
     

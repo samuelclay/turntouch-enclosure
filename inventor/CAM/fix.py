@@ -92,7 +92,7 @@ def speed_adjustment(wood, speed, min_speed=0.5):
                 output.append(line + '\r\n')
         f.close()
         
-        f = open(os.path.join(wood, os.path.basename(cam_file)), 'w+')
+        f = open(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.join(wood, os.path.basename(cam_file))), 'w+')
         f.writelines(output)
         f.close()
     

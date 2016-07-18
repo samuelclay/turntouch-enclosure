@@ -67,7 +67,7 @@ def merge_files(top_prefix, bottom_prefix, combined_filename):
                -> %s lines in %s""" % (len(top_file), top_filename, len(bottom_file), bottom_filename, len(merged_file), combined_filename)
     
 
-def speed_adjustment(wood, speed, min_speed=0.5):
+def speed_adjustment(wood, speed, min_speed=0.8):
     directory = os.path.dirname(os.path.realpath(__file__))
     for cam_file in glob.glob(os.path.join(directory, "*.sbp")):
         for rosewood in ["Fixture Remote Pocket Flat"]:
@@ -87,7 +87,7 @@ def speed_adjustment(wood, speed, min_speed=0.5):
                 new_feed_speed = round(old_feed_speed * speed, 1)
                 new_plunge_speed = round(old_plunge_speed * speed, 1)
                 
-                if old_feed_speed < min_speed:
+                if old_feed_speed <= min_speed:
                     new_feed_speed = old_feed_speed
                     new_plunge_speed = old_plunge_speed
                     

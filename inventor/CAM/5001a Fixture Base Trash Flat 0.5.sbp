@@ -1,18 +1,17 @@
 ' 5001a Fixture Base Trash Flat 0.5"
 ' 5 remotes on 24" x 2.5" x 0.5"
 SA
-VD, , , 0
+IF %(25)=1 THEN GOTO UNIT_ERROR
 &PWMaterial = 1.4
 &PWZorigin = Part Surface
 
 ' Trash Remote Pocket
-&Tool = 3
-C9
 TR, 3000
 C6
+PAUSE 2
 J3, 1.9582, 5.7235, 1.65
 J3, 1.9582, 5.7235, 1.05
-VS, 2, 2
+MS, 2, 2
 M3, 1.9582, 5.7235, 0.7989
 M3, 1.9579, 5.7235, 0.7937
 M3, 1.9571, 5.7235, 0.7885
@@ -157,5 +156,10 @@ M3, 1.9081, 4.4552, 0.0283
 M3, 1.9103, 4.4582, 0.0389
 M3, 1.911, 4.4592, 0.05
 J3, 1.911, 4.4592, 1.65
-C7
 JH
+END
+
+
+UNIT_ERROR:
+CN, 91
+END

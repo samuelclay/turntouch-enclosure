@@ -1,17 +1,17 @@
 ' 5000b Fixture Base Handle Flat 0.5"
+' 5 remotes on 24" x 2.5" x 0.5"
 SA
-VD, , , 0
+IF %(25)=1 THEN GOTO UNIT_ERROR
 &PWMaterial = 1.4
 &PWZorigin = Part Surface
 
 ' Handle Pocket
-&Tool = 3
-C9
 TR, 3000
 C6
+PAUSE 2
 J3, -2.4195, 2.1859, 4.55
 J3, -2.4195, 2.1859, 0.4
-VS, 2, 2
+MS, 2, 2
 M3, -2.4195, 2.1859, 0.1489
 M3, -2.4195, 2.1862, 0.1437
 M3, -2.4195, 2.187, 0.1385
@@ -200,5 +200,10 @@ M3, 25.5475, 1.2726, -0.7217
 M3, 25.5496, 1.2756, -0.7111
 M3, 25.5503, 1.2767, -0.7
 J3, 25.5503, 1.2767, 4.55
-C7
 JH
+END
+
+
+UNIT_ERROR:
+CN, 91
+END

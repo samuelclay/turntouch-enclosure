@@ -10,7 +10,11 @@ def delete_matching_lines(pattern):
         output = []
         found = 0
         # Preserve the last 'C7'/pattern
-        lastPatternIndex = (x for x in reversed([y for y in enumerate(filelines)]) if x[1] == pattern).next()[0]
+        try:
+            lastPatternIndex = (x for x in reversed([y for y in enumerate(filelines)]) if x[1] == pattern).next()[0]
+        except Exception, e:
+            lastPatternIndex = -1
+            pass
         for l, line in enumerate(filelines):
             if not pattern in line or l == lastPatternIndex:
                 output.append(line + '\r\n')

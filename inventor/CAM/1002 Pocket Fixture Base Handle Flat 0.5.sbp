@@ -1,17 +1,18 @@
 ' 1002 Pocket Fixture Base Handle Flat 0.5"
 ' 5 remotes on 24" x 2.5" x 0.5"
 SA
-IF %(25)=1 THEN GOTO UNIT_ERROR
+VD, , , 0
 &PWMaterial = 1.4
 &PWZorigin = Part Surface
 
 ' Handle Pocket
+&Tool = 3
+C9
 TR, 3000
 C6
-PAUSE 2
 J3, -2.5805, 3.8307, 4.55
 J3, -2.5805, 3.8307, 0.4
-MS, 2, 2
+VS, 2, 2
 M3, -2.5805, 3.8307, 0.1489
 M3, -2.5805, 3.8304, 0.1437
 M3, -2.5805, 3.8296, 0.1385
@@ -290,10 +291,5 @@ M3, 25.269, 4.1654, -0.7217
 M3, 25.2719, 4.1632, -0.7111
 M3, 25.273, 4.1625, -0.7
 J3, 25.273, 4.1625, 4.55
+C7
 JH
-END
-
-
-UNIT_ERROR:
-CN, 91
-END

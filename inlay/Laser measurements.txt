@@ -1,4 +1,18 @@
+0) Split the case into the top and bottom
 
-From center:
-22.962"
-0.957"
+   Case width: 2.04"
+   Case height: 0.35"
+
+1) Run 'Case Outline' on spoil board
+
+   Select: Center
+   Z: 0.75"
+   X: (23.5-2.04/2) = 22.48"
+   Y: (0.5+2.04/2) = 1.52"
+
+2) Run 'Engraver' on remote case with north ridge, facing down, pointing top left (horizontal mirror)
+
+   Select: Center
+   Z: (0.75+0.35) = 1.1"
+   X: (23.5-2.04/2) = 22.48"
+   Y: (0.5+2.04/2) = 1.52"

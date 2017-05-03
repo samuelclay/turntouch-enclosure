@@ -7,7 +7,6 @@ IF %(25)=1 THEN GOTO UNIT_ERROR
 &PWZorigin = Part Surface
 
 ' Bottom Flat Contour
-C7
 &Tool = 4
 C9
 TR, 1000

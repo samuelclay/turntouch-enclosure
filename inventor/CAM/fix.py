@@ -12,7 +12,7 @@ def delete_matching_lines(pattern):
         # Preserve the last 'C7'/pattern
         try:
             lastPatternIndex = (x for x in reversed([y for y in enumerate(filelines)]) if x[1] == pattern).next()[0]
-        except Exception, e:
+        except:
             lastPatternIndex = -1
             pass
         for l, line in enumerate(filelines):
@@ -74,7 +74,7 @@ def merge_files(top_prefix, bottom_prefix, combined_filename):
 def speed_adjustment(wood, speed, min_speed=0.8):
     directory = os.path.dirname(os.path.realpath(__file__))
     for cam_file in glob.glob(os.path.join(directory, "*.sbp")):
-        for rosewood in ["Fixture Remote Pocket Flat"]:
+        for rosewood in ["Fixture Remote Pocket Flat", 'Contour Cutout']:
             if rosewood in cam_file:
                 print " ---> %s: %-48s shifting for Rosewood" % (wood, os.path.basename(cam_file))
                 break
@@ -84,7 +84,7 @@ def speed_adjustment(wood, speed, min_speed=0.8):
         filelines = f.read().splitlines()
         output = []
         for l, line in enumerate(filelines):
-            if line.startswith('VS'):
+            if line.startswith('VS') or line.startswith('MS'):
                 parts = line.split(',')
                 old_plunge_speed = float(parts.pop())
                 old_feed_speed = float(parts.pop())
@@ -98,8 +98,10 @@ def speed_adjustment(wood, speed, min_speed=0.8):
                 # print " ---> %s: %-48s shifting %s,%s to %s,%s" % (wood, os.path.basename(cam_file),
                 #     old_feed_speed, old_plunge_speed, new_feed_speed, new_plunge_speed)
                 output.append("%s, %s, %s\r\n" % (', '.join(parts), new_feed_speed, new_plunge_speed))
+                
             else:
                 output.append(line + '\r\n')
+        
         f.close()
         
         f = open(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.join(wood, os.path.basename(cam_file))), 'w+')

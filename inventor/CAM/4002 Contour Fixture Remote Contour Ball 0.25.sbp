@@ -6,7 +6,6 @@ IF %(25)=1 THEN GOTO UNIT_ERROR
 &PWZorigin = Part Surface
 
 ' Top Outline
-C7
 &Tool = 1
 C9
 TR, 1000

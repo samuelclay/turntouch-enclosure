@@ -1,5 +1,4 @@
 ' 7004a Button Fixture Trash Flat 0.5
-' 5 remotes on 24" x 2.5" x 0.5"
 SA
 CN, 90
 IF %(25)=1 THEN GOTO UNIT_ERROR

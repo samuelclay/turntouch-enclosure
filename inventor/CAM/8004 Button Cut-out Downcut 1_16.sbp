@@ -1,5 +1,4 @@
 ' 8004 Button Cut-out Downcut 1_16
-' 5 remotes on 24" x 2.5" x 0.5"
 SA
 CN, 90
 IF %(25)=1 THEN GOTO UNIT_ERROR

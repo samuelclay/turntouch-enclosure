@@ -1,7 +1,6 @@
 ' 7002 Button Fixture Handles Flat 0.5
 SA
-CN, 90
-IF %(25)=1 THEN GOTO UNIT_ERROR
+VD, , , 0
 &PWMaterial = 1.255
 &PWZorigin = Part Surface
 
@@ -10,12 +9,9 @@ IF %(25)=1 THEN GOTO UNIT_ERROR
 C9
 TR, 3000
 C6
-PAUSE 2
-JZ, 4.405
-J2, -2.625, 1.4694
 J3, -2.625, 1.4694, 4.405
 J3, -2.625, 1.4694, 1.005
-MS, 2, 2
+VS, 2, 2
 M3, -2.625, 1.4694, 0.6039
 M3, -2.625, 1.4697, 0.5987
 M3, -2.625, 1.4705, 0.5935
@@ -424,11 +420,4 @@ M3, 15.1469, 2.1929, -0.7611
 M3, 15.148, 2.1922, -0.75
 J3, 15.148, 2.1922, 4.405
 C7
-JZ, 2.505
 JH
-END
-
-
-UNIT_ERROR:
-CN, 91
-END

@@ -436,7 +436,7 @@ function onSection() {
   var initialPosition = getFramePosition(currentSection.getInitialPosition());
   if (!retracted) {
     if (getCurrentPosition().z < initialPosition.z) {
-      writeBlock("J3", zOutput.format(initialPosition.z));
+      writeBlock("JZ", zOutput.format(initialPosition.z));
       retracted = true;
     } else {
       retracted = false;

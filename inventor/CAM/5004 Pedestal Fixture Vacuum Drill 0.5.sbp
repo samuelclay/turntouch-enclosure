@@ -1,4 +1,5 @@
-' 5004 Pedestal Fixture Vacuum Drill 0.25
+' 5004 Pedestal Fixture Vacuum Drill 0.5
+' 5 remotes on 24" x 2.5" x 0.5"
 SA
 VD, , , 0
 &PWMaterial = 1.5407

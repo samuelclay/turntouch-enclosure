@@ -2,7 +2,7 @@
 ' 5 remotes on 24" x 2.5" x 0.5"
 SA
 VD, , , 0
-&PWMaterial = 2
+&PWMaterial = 1.5
 &PWZorigin = Part Surface
 
 ' Group Cutout Contour

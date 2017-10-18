@@ -2,7 +2,7 @@
 ' 5 remotes on 24" x 2.5" x 0.5"
 SA
 VD, , , 0
-&PWMaterial = 1.345
+&PWMaterial = 1.347
 &PWZorigin = Part Surface
 
 ' Bottom face Pocket
